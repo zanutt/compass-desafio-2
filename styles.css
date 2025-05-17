@@ -59,8 +59,6 @@
       background: url("/imgs/herodog.png") no-repeat center center/cover;
       width: 100%;
       aspect-ratio: 1.52/1;
-      position: relative;
-      align-items: center;
     }
   }
   @media (max-width: 768px) {
@@ -204,5 +202,116 @@
 
   .shop-btn:hover {
     opacity: 1;
+  }
+}
+
+@layer components {
+  .shop {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+  }
+
+  .shop {
+    padding: 40px 16px;
+  }
+
+  h2 {
+    font-size: 35px;
+    margin-bottom: 16px;
+  }
+
+  .top-shop {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #6c757d;
+    margin-bottom: 20px;
+  }
+
+  .head-feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .shop-container ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .shop-container li {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+  }
+
+  .shop-click {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: #101828;
+    background: linear-gradient(
+      -102deg,
+      rgba(16, 24, 40, 1) 0%,
+      rgba(35, 50, 80, 1) 100%
+    );
+    color: var(--text-white);
+  }
+
+  @media (width > 768px) {
+    .lupa {
+      display: none;
+    }
+
+    .shop-container {
+      padding: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .search-input,
+    .prod-desktop,
+    .view-more {
+      display: none;
+    }
+
+    .shop-container ul {
+      justify-content: space-between;
+    }
+    .shop-container h2 {
+      font-size: 15px;
+      font-weight: 500;
+      padding: 0 10px;
+    }
+
+    .products {
+      margin-top: 20px;
+    }
+
+    .product-card img {
+      align-self: center;
+      max-width: 95vw;
+      max-height: 426px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .product-img-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    align-items: center;
+    justify-content: center;
   }
 }

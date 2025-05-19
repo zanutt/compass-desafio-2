@@ -505,6 +505,9 @@
   }
 
   @media (max-width: 768px) {
+    .about-us-container {
+      padding: 20px 16px 40px 16px;
+    }
     .text-container > p {
       font-size: 15px;
       font-weight: 400;

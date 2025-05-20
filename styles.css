@@ -301,7 +301,6 @@
 
   .product-img-container {
     display: flex;
-    flex-wrap: wrap;
     gap: 17px;
     align-items: stretch;
     justify-content: stretch;
@@ -327,6 +326,12 @@
     text-decoration: underline;
   }
 
+  @media (max-width: 768px) {
+    .product-img-container {
+      flex-wrap: wrap;
+    }
+  }
+
   @media (min-width: 769px) {
     .search-input-mobile,
     .lupa {
@@ -342,6 +347,10 @@
     }
     .products {
       margin-top: 40px;
+    }
+
+    .shop {
+      padding: 70px 80px 16px 80px;
     }
   }
 
@@ -467,6 +476,11 @@
       min-height: 160px;
     }
   }
+  @media (min-width: 769px) {
+    .services {
+      padding: 70px 80px 16px 80px;
+    }
+  }
 }
 
 @layer components {
@@ -525,6 +539,12 @@
       display: none;
     }
   }
+
+  @media (min-width: 769px) {
+    .about {
+      padding: 70px 80px 16px 80px;
+    }
+  }
 }
 
 @layer components {
@@ -579,40 +599,36 @@
   }
 
   @media (min-width: 769px) {
+    .blog {
+      padding: 70px 80px 16px 80px;
+    }
     .blog-container {
       display: flex;
       gap: 32px;
     }
 
-    .blog-container > article {
+    .blog-container > article,
+    .blog-container > .video-wrapper {
       flex: 1 1 50%;
       min-width: 0;
-    }
-
-    .blog-container article h2 {
-      font-size: 36px;
-    }
-    .blog-container article p {
-      font-size: 18px;
+      align-items: stretch;
     }
 
     .video-wrapper {
-      flex: 1 1 50%;
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-width: 0;
+      position: relative;
+      height: 100%;
     }
 
     .desktop-video {
-      display: block;
       width: 100%;
       max-width: 400px;
       aspect-ratio: 4/3;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       background: #000;
+      display: block;
     }
 
     .custom-play {
@@ -625,14 +641,16 @@
       cursor: pointer;
       padding: 0;
       z-index: 2;
-      transition: opacity 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: opacity 0.2s;
     }
 
     .custom-play svg {
       display: block;
+      width: 64px;
+      height: 64px;
     }
   }
 }

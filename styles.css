@@ -624,11 +624,12 @@
 
     .desktop-video {
       width: 100%;
-      max-width: 400px;
-      aspect-ratio: 4/3;
+      height: 100%; /* Faz o vídeo ocupar toda a altura da .video-wrapper */
+      object-fit: cover; /* Preenche o espaço, cortando se necessário */
       border-radius: 12px;
       background: #000;
       display: block;
+      max-width: 100%;
     }
 
     .custom-play {

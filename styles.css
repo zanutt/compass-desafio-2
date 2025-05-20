@@ -215,16 +215,17 @@
     padding: 40px 16px;
   }
 
+  .top-shop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
   h2 {
     font-size: 35px;
     margin-bottom: 16px;
-  }
-
-  .top-shop {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #6c757d;
-    margin-bottom: 20px;
   }
 
   .head-feature {
@@ -399,7 +400,7 @@
     border-bottom: 1px solid #6c757d;
     margin-bottom: 10px;
     gap: 12px;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
 
   .title-service h2 {
@@ -445,6 +446,21 @@
   }
 
   @media (max-width: 768px) {
+    .title-service {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #6c757d;
+      margin-bottom: 10px;
+      gap: 12px;
+      padding-bottom: 10px;
+    }
+
+    .title-service h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1;
+    }
+
     .services-grid {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;

@@ -65,10 +65,12 @@
     .menu-mobile {
       display: none;
     }
-    nav {
-      padding: 24px 112px;
+    .content {
+      width: 100%;
+      padding: 18px 80px 0 80px;
     }
   }
+
   @media (max-width: 768px) {
     .hero {
       background: url("/imgs/herodog-mobile.png") no-repeat center center/cover;
@@ -77,13 +79,17 @@
     .menu-desktop {
       display: none;
     }
+
+    .content {
+      width: 100%;
+      padding: 28px 16px 0 16px;
+    }
   }
   nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5em 1em;
   }
 
   .left-side {
@@ -135,7 +141,6 @@
 @layer components {
   .hero-text {
     margin-top: 8.5em;
-    padding: 2em;
   }
 
   @media (max-width: 768px) {
@@ -161,7 +166,6 @@
   @media (min-width: 769px) {
     .hero-text {
       margin-top: 161px;
-      padding: 0 112px;
     }
     .hero-text h1 {
       font-size: 48px;
@@ -203,7 +207,6 @@
   .shop {
     background-color: var(--text-white);
     color: var(--text-dark);
-    padding: 40px 16px;
   }
 
   .top-shop {
@@ -284,7 +287,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 16px;
     margin: 0;
   }
 
@@ -337,19 +339,12 @@
       display: none !important;
     }
 
-    .shop-container {
-      padding: 40px;
-    }
     .container-max {
       border: 0.5px solid #f5f5f5;
-      margin: 15px;
+      padding: 40px 21px;
     }
     .products {
       margin-top: 40px;
-    }
-
-    .shop {
-      padding: 70px 80px 16px 80px;
     }
   }
 
@@ -367,7 +362,7 @@
     }
     .search-input-mobile,
     .lupa {
-      display: block !important;
+      display: none;
     }
     .shop-container ul {
       justify-content: space-between;
@@ -376,6 +371,7 @@
       font-size: 15px;
       font-weight: 500;
       padding: 0 10px;
+      margin: 20px 0;
     }
     .products {
       margin-top: 20px;
@@ -401,6 +397,7 @@
     margin-bottom: 10px;
     gap: 12px;
     padding-bottom: 10px;
+    padding-top: 40px;
   }
 
   .title-service h2 {
@@ -421,7 +418,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 24px;
-    padding: 27px 30px 26px 30px;
   }
 
   .services-grid a {
@@ -498,7 +494,6 @@
 
   .about-us-container {
     display: flex;
-    padding: 58px 41px 58px 34px;
     justify-content: space-between;
   }
 
@@ -519,16 +514,13 @@
   .cat-container img {
     width: 100%;
     max-width: 480px;
-    border-radius: 32px;
+    border-radius: 16px;
     object-fit: cover;
     aspect-ratio: 4/5;
     height: auto;
   }
 
   @media (max-width: 768px) {
-    .about-us-container {
-      padding: 20px 16px 40px 16px;
-    }
     .text-container > p {
       font-size: 15px;
       font-weight: 400;
@@ -604,6 +596,15 @@
     .blog-container {
       display: flex;
       gap: 32px;
+      padding-top: 64px;
+    }
+
+    .blog-container article h2 {
+      padding-bottom: 48px;
+    }
+
+    .blog-container article p {
+      padding: 32px 0;
     }
 
     .blog-container > article,
@@ -623,7 +624,7 @@
 
     .desktop-video {
       width: 100%;
-      height: 100%;
+      height: 649px;
       object-fit: cover;
       border-radius: 12px;
       background: #000;
@@ -709,5 +710,166 @@
       margin: 0;
       list-style: none;
     }
+
+    @media (min-width: 769px) {
+      .team {
+        padding: 70px 80px 16px 80px;
+      }
+
+      .team-container {
+        display: flex;
+        width: 100%;
+        padding: 54px 34px 0 34px;
+      }
+
+      .person {
+        align-items: baseline;
+      }
+
+      .person img {
+        width: fit-content;
+      }
+
+      .person h3,
+      .person p {
+        text-align: left;
+      }
+
+      .person h3 {
+        font-size: 20px;
+      }
+      .person p {
+        font-size: 18px;
+      }
+
+      .person ul {
+        gap: 20px;
+      }
+
+      .person svg {
+        display: block;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+@layer components {
+  .contact {
+    background-color: var(--background-color);
+  }
+
+  .container-content {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 20px;
+    gap: 42px;
+  }
+
+  .contacts {
+    display: flex;
+    gap: 20px;
+  }
+  .left-contacts {
+    display: flex;
+    gap: 31px;
+    flex-direction: column;
+  }
+  .right-contacts {
+    display: flex;
+    gap: 31px;
+    flex-direction: column;
+  }
+  .contact-info {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .contact-info svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact-info h3 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .contact-info p {
+    color: #cecece;
+    font-size: 11px;
+    font-weight: 400;
+  }
+  .contact-info h4 {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .container-form {
+    background-color: var(--text-white);
+    color: var(--text-dark);
+    border-radius: 10.5px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 26.2px 21px;
+    gap: 15.72px;
+  }
+
+  input {
+    width: 100%;
+    padding: 7.86px 10.48px;
+    align-self: stretch;
+    border-radius: 5.2px;
+    border: 0.655px solid #d0d5dd;
+    box-shadow: 0px 0.655px 1.31px 0px rgba(16, 24, 40, 0.05);
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .name-form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 7.86px;
+  }
+
+  .checkbox-container p {
+    font-family: "Inter", sans-serif;
+  }
+  .checkbox-container a {
+    font-family: "Inter", sans-serif;
+    text-decoration: underline;
+  }
+  .politics {
+    display: block;
+    width: 13px;
+    height: 13px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13.1px 16.3px;
+    border-radius: 5.2px;
+    border: 0.655px solid #243961;
+    background: linear-gradient(87deg, #101828 0.18%, #233250 99.39%);
+    color: var(--text-white);
+    font-size: 10.4px;
+    font-weight: 600;
   }
 }

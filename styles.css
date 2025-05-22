@@ -150,10 +150,6 @@
     }
   }
 
-  h1 p {
-    padding: calc(5rem + 3vh) 2rem;
-  }
-
   h1 {
     font-size: 30px;
     font-weight: 500;
@@ -175,90 +171,6 @@
     .hero-text p {
       font-size: 18px;
       max-width: 600px;
-    }
-    .product-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-info {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(16, 24, 40, 0.85);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s;
-      border-radius: 15px;
-      padding: 24px;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .product-card:hover .product-info {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .top-product {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .price {
-      font-size: 34px;
-      margin: 12px 0;
-      font-weight: 500;
-    }
-
-    .product-info h3 {
-      font-size: 34px;
-      font-weight: 700;
-    }
-
-    .product-info p {
-      font-size: 18px;
-      font-weight: 400;
-    }
-
-    .prod-text-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      opacity: 0.7;
-    }
-
-    .btn-carrinho {
-      background: #2d5fff;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 24px;
-      font-size: 1em;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.2s;
-    }
-
-    .btn-carrinho:hover {
-      background: #1a3fa6;
-    }
-
-    .shop-btn-wrapper {
-      display: flex;
-      gap: 13px;
-    }
-
-    .quantity-control {
-      gap: 15px;
-      font: 20px;
     }
   }
   .shop-btn {
@@ -399,6 +311,10 @@
     margin-top: 16px;
   }
 
+  .product-info {
+    display: none;
+  }
+
   .view-more {
     color: #101828;
     font-weight: 600;
@@ -407,15 +323,8 @@
     transition: color 0.2s;
   }
 
-  .view-more:hover {
-    color: #2d5fff;
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    .product-img-container {
-      flex-wrap: wrap;
-    }
+  .product-img-container {
+    flex-wrap: wrap;
   }
 
   @media (min-width: 769px) {
@@ -424,12 +333,105 @@
       display: none !important;
     }
 
+    .product-img-container {
+      flex-wrap: nowrap;
+    }
+
     .container-max {
       border: 0.5px solid #f5f5f5;
       padding: 40px 21px;
     }
     .products {
       margin-top: 40px;
+    }
+    .view-more:hover {
+      color: #2d5fff;
+      text-decoration: underline;
+    }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(16, 24, 40, 0.85);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 15px;
+      padding: 24px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .product-card:hover .product-info {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .top-product {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .price {
+      font-size: 34px;
+      margin: 12px 0;
+      font-weight: 500;
+    }
+
+    .product-info h3 {
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .product-info p {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .prod-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0.7;
+    }
+
+    .btn-carrinho {
+      background: #2d5fff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-carrinho:hover {
+      background: #1a3fa6;
+    }
+
+    .shop-btn-wrapper {
+      display: flex;
+      gap: 13px;
+    }
+
+    .quantity-control {
+      gap: 15px;
+      font: 20px;
     }
   }
 

@@ -33,39 +33,54 @@ function validateName(input) {
   if (!isValid) {
     input.setCustomValidity("Por favor digite um nome válido");
   } else {
-    email.setCustomValidity("");
+    input.setCustomValidity("");
   }
 }
 
-firstName.addEventListener("input", function () {
-  validateName(firstName);
-});
+if (firstName) {
+  firstName.addEventListener("input", function () {
+    validateName(firstName);
+  });
+}
 
-lastName.addEventListener("input", function () {
-  validateName(lastName);
-});
+if (lastName) {
+  lastName.addEventListener("input", function () {
+    validateName(lastName);
+  });
+}
 
-// Validação do email reaproveitando para o subscribe
+// Validação do email
 var email = document.getElementById("email");
 
-email.addEventListener("input", function (event) {
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("Por favor coloque um email valido");
-  } else {
-    email.setCustomValidity("");
-  }
-});
+if (email) {
+  email.addEventListener("input", function (event) {
+    if (email.validity.typeMismatch) {
+      email.setCustomValidity("Por favor coloque um email valido");
+    } else {
+      email.setCustomValidity("");
+    }
+  });
+}
+
+// validação do email do subscribe
+var emailNews = document.getElementById("emailnews");
+if (emailNews) {
+  emailNews.addEventListener("input", function () {
+    if (emailNews.validity.typeMismatch) {
+      emailNews.setCustomValidity("Por favor coloque um email válido");
+    } else {
+      emailNews.setCustomValidity("");
+    }
+  });
+}
 
 // Validação da mensagem (Nâo estou conseguindo evitar XSS por exemplo)
 
-var msgRegex =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?: \.[a-zA-Z0-9-]+)*$/;
-
-var msg = document.getElementById("message").trim(" ");
+var msg = document.getElementById("message");
 
 function validateMsg(input) {
-  var value = input.value;
-  var isValid = value.length > 0 && msgRegex.test(value);
+  var value = input.value.trim();
+  var isValid = value.length > 0;
   if (!isValid) {
     input.setCustomValidity("Por favor digite um nome válido");
   } else {
@@ -82,7 +97,6 @@ msg.addEventListener("input", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const lupa = document.querySelector(".lupa");
   const searchInput = document.querySelector(".search-input-mobile");
-  const wrapper = document.querySelector(".search-mobile-wrapper");
 
   function showInput() {
     lupa.style.display = "none";

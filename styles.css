@@ -1,3 +1,5 @@
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ explicação dos flexbox */
+
 @font-face {
   font-family: "Formative Trial";
   src: local("Formative Trial"),
@@ -50,6 +52,7 @@
   }
 }
 
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio link util para a hero img */
 @layer navigation {
   nav {
     display: flex;
@@ -285,8 +288,9 @@
     line-height: 120%;
     margin-bottom: 1rem;
   }
-  p {
+  .hero-text p {
     font-size: 14px;
+    padding-right: 50px;
   }
 
   @media (min-width: 769px) {
@@ -294,16 +298,22 @@
       margin-top: 161px;
     }
     .hero-text h1 {
-      font-size: 48px;
-      line-height: 1.1;
+      font-size: 60px;
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 1.2px;
     }
+
     .hero-text p {
-      font-size: 18px;
-      max-width: 600px;
+      margin-top: 20px;
+      font-size: 16px;
+      max-width: 631px;
+      line-height: 24px;
+      padding: 0;
     }
   }
   .shop-btn {
-    margin-top: 3.125em;
+    margin-top: 30px;
     display: flex;
     border: 1px solid var(--text-white);
     border-radius: 999px;

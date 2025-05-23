@@ -51,17 +51,6 @@ lastName.addEventListener("input", function () {
   validateName(lastName);
 });
 
-// Função do botão do shop
-
-const menuItems = document.querySelectorAll("#menu .menu-item");
-
-menuItems.forEach((item) => {
-  item.addEventListener("click", function () {
-    menuItems.forEach((i) => i.classList.remove("shop-click"));
-    this.classList.add("shop-click");
-  });
-});
-
 // Função para aparecer e desaparecer o search no mobile
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -93,5 +82,145 @@ document.addEventListener("DOMContentLoaded", function () {
 
   searchInput.addEventListener("blur", function () {
     setTimeout(hideInput, 100);
+  });
+});
+
+// DROPDOWN MENU
+
+document.addEventListener("click", (e) => {
+  const isDropdownButton = e.target.closest("[data-dropdown-button]");
+  if (!isDropdownButton && e.target.closest("[data-dropdown]") != null) return;
+
+  let currentDropdown;
+  if (isDropdownButton) {
+    currentDropdown = isDropdownButton.closest("[data-dropdown]");
+    currentDropdown.classList.toggle("active");
+  }
+
+  document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
+    if (dropdown === currentDropdown) return;
+    dropdown.classList.remove("active");
+  });
+});
+
+// Função de card shops por categorias +
+// Função de random nas categorias
+
+// Variaveis para controlar se esta mostrando tudo, e variavel para guardar o ultimo type utilizdo
+let showingAll = false;
+let lastType = "random";
+
+function showProduct(type, showAll = false) {
+  const cards = document.querySelectorAll(".product-card");
+  let visibleCount = 0;
+  lastType = type;
+  showingAll = showAll;
+
+  // Esconde todos os cards primeiro para resetar o container dos cards
+  cards.forEach((card) => {
+    card.style.display = "none";
+  });
+
+  //  função de random para os types, limitando a 2 no mobile e 3 no dekstop
+  if (type === "random") {
+    const cardsArr = Array.from(cards);
+    const shuffled = cardsArr.sort(() => 0.5 - Math.random());
+    const limit = window.innerWidth < 769 ? 2 : 3;
+    const maxToShow = showAll ? shuffled.length : limit;
+    shuffled.slice(0, maxToShow).forEach((card) => {
+      card.style.display = "flex";
+      visibleCount++;
+    });
+  } else {
+    // Mostra cards das categorias fazendo funcionar também quando tem mais de uma categoria e limitando 2 no mobile
+    cards.forEach((card) => {
+      const types = (card.dataset.type || "").split(" ");
+      if (type === "all" || types.includes(type)) {
+        if (window.innerWidth < 769 && !showAll && visibleCount < 2) {
+          card.style.display = "flex";
+          visibleCount++;
+        }
+        // se for clicado no show more mostra todos os items pois so temos 5
+        if (window.innerWidth >= 769 && (showAll || visibleCount < 3)) {
+          card.style.display = "flex";
+          visibleCount++;
+        }
+
+        if (showAll) {
+          card.style.display = "flex";
+        }
+      }
+    });
+  }
+
+  // Cria a mensagem de nenhum produto na categoria e confere se ela ja foi criada no documento para nao mostrar 2 vvezes
+  let noProductsMsg = document.getElementById("no-products-msg");
+  if (!noProductsMsg) {
+    noProductsMsg = document.createElement("div");
+    noProductsMsg.id = "no-products-msg";
+    noProductsMsg.textContent =
+      "Nenhum produto encontrado para esta categoria.";
+    noProductsMsg.style.display = "none";
+    noProductsMsg.style.textAlign = "center";
+    noProductsMsg.style.margin = "32px 0";
+    document.querySelector(".product-img-container").appendChild(noProductsMsg);
+  }
+  noProductsMsg.style.display = visibleCount === 0 ? "block" : "none";
+
+  // retira o botao de view more quando aparece todos os itens
+  const viewMoreBtn = document.getElementById("view-more-btn");
+  if (
+    window.innerWidth >= 769 &&
+    !showAll &&
+    visibleCount > 0 &&
+    visibleCount < cards.length
+  ) {
+    viewMoreBtn.style.display = "inline-block";
+  } else {
+    viewMoreBtn.style.display = "none";
+  }
+}
+
+// faz as imagens iniciais serem randomizadas
+function showRandomCardsOnLoad() {
+  showProduct("random");
+}
+
+function handleInitialCards() {
+  showRandomCardsOnLoad();
+}
+
+window.addEventListener("DOMContentLoaded", handleInitialCards);
+
+// função para funcionar o botao do viewmore
+document.addEventListener("DOMContentLoaded", function () {
+  const viewMoreBtn = document.getElementById("view-more-btn");
+  if (viewMoreBtn) {
+    viewMoreBtn.addEventListener("click", function () {
+      showProduct(lastType, true);
+    });
+  }
+});
+
+// funcao para funcionar os produtos e também adcionar o shop-click que é o meu design do botao que esta no css
+const menuItems = document.querySelectorAll("#menu .menu-item");
+menuItems.forEach((item) => {
+  item.addEventListener("click", function () {
+    menuItems.forEach((i) => i.classList.remove("shop-click"));
+    this.classList.add("shop-click");
+    const type = this.textContent.trim().toLowerCase();
+    if (type === "random") {
+      showProduct("random");
+    } else if (type === "cat") {
+      showProduct("cat");
+    } else if (type === "dogs") {
+      showProduct("dog");
+    } else if (type === "fish") {
+      showProduct("fish");
+    } else if (type === "birds") {
+      showProduct("birds");
+    } else {
+      showProduct("all");
+    }
   });
 });

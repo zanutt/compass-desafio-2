@@ -57,35 +57,6 @@
 }
 
 @layer navigation {
-  @media (min-width: 769px) {
-    .hero {
-      background: url("/imgs/herodog.png") no-repeat center center/cover;
-      width: 100%;
-      aspect-ratio: 1.52/1;
-    }
-    .menu-mobile {
-      display: none;
-    }
-    .content {
-      width: 100%;
-      padding: 18px 80px 0 80px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      background: url("/imgs/herodog-mobile.png") no-repeat center center/cover;
-      aspect-ratio: 14/25;
-    }
-    .menu-desktop {
-      display: none;
-    }
-
-    .content {
-      width: 100%;
-      padding: 28px 16px 0 16px;
-    }
-  }
   nav {
     display: flex;
     flex-direction: row;
@@ -136,6 +107,170 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      background: url("/imgs/herodog-mobile.png") no-repeat center center/cover;
+      aspect-ratio: 14/25;
+    }
+    .menu-desktop {
+      display: none;
+    }
+
+    .content {
+      width: 100%;
+      padding: 28px 16px 0 16px;
+    }
+
+    .dropdown-menu {
+      position: fixed;
+      top: 60px;
+      left: 6%;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      width: 90vw;
+      max-width: 350px;
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      border-radius: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+      z-index: 999;
+    }
+
+    .dropdown-menu ul {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .drop-menu-link {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-dark, #222);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.1);
+      padding: 18px 0;
+      font-size: 1.15em;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .drop-menu-link:hover {
+      background: #f4f4f4;
+      color: var(--primary-color, #0077ff);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    }
+
+    nav li {
+      margin: 0;
+      width: 100%;
+    }
+
+    .mobile-drop {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .mobile-drop.active .dropdown-menu {
+      opacity: 1 !important;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .hero {
+      background: url("/imgs/herodog.png") no-repeat center center/cover;
+      width: 100%;
+      aspect-ratio: 1.52/1;
+    }
+    .menu-mobile {
+      display: none;
+    }
+    .content {
+      width: 100%;
+      padding: 18px 80px 0 80px;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 0.5rem);
+      background-color: #f5f5f5;
+      color: var(--text-dark);
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+      display: flex;
+      flex-direction: column;
+      block-size: fit-content;
+      gap: 12px;
+    }
+
+    .dropdown-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+      padding: 5px;
+      gap: 12px;
+    }
+
+    .drop-menu-link {
+      border: 1px solid transparent;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .drop-menu-link:hover {
+      background-color: #f4f4f4;
+      border: 1px solid #313131;
+      border-radius: 12px;
+    }
+
+    .shop-drop {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .shop-drop.active .dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .service-drop {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .service-drop.active .dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
   }
 }
 
@@ -284,6 +419,11 @@
     flex-direction: column;
     align-items: center;
     margin: 0;
+    display: none;
+  }
+
+  .product-card:nth-child(-n + 2) {
+    display: flex;
   }
 
   .product-card img {
@@ -351,8 +491,7 @@
     }
 
     .product-img-container {
-      flex-wrap: nowrap;
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
     .container-max {
@@ -369,6 +508,7 @@
   }
   .product-card {
     position: relative;
+    display: flex;
     overflow: hidden;
   }
 
@@ -461,7 +601,6 @@
       margin-bottom: 10px;
     }
     .search-input,
-    .prod-desktop,
     .view-more,
     .search-bar,
     .view-more-container {

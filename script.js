@@ -18,17 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Validação do email
-// Api de validacao do HTML5
+// Validação dos forms
+// Api de validacao do HTML5 para o email
 // https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Forms/Form_validation
-
-var email = document.getElementById("email");
-
-email.addEventListener("input", function (event) {
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("Por favor coloque um email valido");
-  }
-});
 
 // Validação do name
 var firstName = document.getElementById("firstname");
@@ -40,6 +32,8 @@ function validateName(input) {
   var isValid = value.length > 0 && nameRegex.test(value);
   if (!isValid) {
     input.setCustomValidity("Por favor digite um nome válido");
+  } else {
+    email.setCustomValidity("");
   }
 }
 
@@ -49,6 +43,38 @@ firstName.addEventListener("input", function () {
 
 lastName.addEventListener("input", function () {
   validateName(lastName);
+});
+
+// Validação do email reaproveitando para o subscribe
+var email = document.getElementById("email");
+
+email.addEventListener("input", function (event) {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("Por favor coloque um email valido");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+
+// Validação da mensagem (Nâo estou conseguindo evitar XSS por exemplo)
+
+var msgRegex =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?: \.[a-zA-Z0-9-]+)*$/;
+
+var msg = document.getElementById("message").trim(" ");
+
+function validateMsg(input) {
+  var value = input.value;
+  var isValid = value.length > 0 && msgRegex.test(value);
+  if (!isValid) {
+    input.setCustomValidity("Por favor digite um nome válido");
+  } else {
+    email.setCustomValidity("");
+  }
+}
+
+msg.addEventListener("input", function () {
+  validateMsg(msg);
 });
 
 // Função para aparecer e desaparecer o search no mobile
@@ -121,7 +147,7 @@ function showProduct(type, showAll = false) {
     card.style.display = "none";
   });
 
-  //  função de random para os types, limitando a 2 no mobile e 3 no dekstop
+  //  Função de random para os types, limitando a 2 no mobile e 3 no dekstop
   if (type === "random") {
     const cardsArr = Array.from(cards);
     const shuffled = cardsArr.sort(() => 0.5 - Math.random());
@@ -140,7 +166,7 @@ function showProduct(type, showAll = false) {
           card.style.display = "flex";
           visibleCount++;
         }
-        // se for clicado no show more mostra todos os items pois so temos 5
+        // Se for clicado no show more mostra todos os items pois so temos 5
         if (window.innerWidth >= 769 && (showAll || visibleCount < 3)) {
           card.style.display = "flex";
           visibleCount++;
@@ -167,7 +193,7 @@ function showProduct(type, showAll = false) {
   }
   noProductsMsg.style.display = visibleCount === 0 ? "block" : "none";
 
-  // retira o botao de view more quando aparece todos os itens
+  // Retira o botao de view more quando aparece todos os itens
   const viewMoreBtn = document.getElementById("view-more-btn");
   if (
     window.innerWidth >= 769 &&
@@ -181,7 +207,7 @@ function showProduct(type, showAll = false) {
   }
 }
 
-// faz as imagens iniciais serem randomizadas
+// Faz as imagens iniciais serem randomizadas
 function showRandomCardsOnLoad() {
   showProduct("random");
 }
@@ -192,7 +218,7 @@ function handleInitialCards() {
 
 window.addEventListener("DOMContentLoaded", handleInitialCards);
 
-// função para funcionar o botao do viewmore
+// Função para funcionar o botao do viewmore
 document.addEventListener("DOMContentLoaded", function () {
   const viewMoreBtn = document.getElementById("view-more-btn");
   if (viewMoreBtn) {
@@ -202,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// funcao para funcionar os produtos e também adcionar o shop-click que é o meu design do botao que esta no css
+// Funcao para funcionar os produtos e também adcionar o shop-click que é o meu design do botao que esta no css
 const menuItems = document.querySelectorAll("#menu .menu-item");
 menuItems.forEach((item) => {
   item.addEventListener("click", function () {

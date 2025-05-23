@@ -115,7 +115,7 @@
                                 <input class="search-input" type="text" placeholder="Search">
                             </div>
                         </div>
-                        <ul>
+                        <ul id="menu">
                             <li class="menu-item shop-click">Random</li>
                             <li class="menu-item">Cat</li>
                             <li class="menu-item">Dogs</li>
@@ -597,23 +597,24 @@
                             <div class="name-form">
                                 <div class="input">
                                     <label for="firstname">First Name</label>
-                                    <input type="text" id="firstname" name="firstname" placeholder="First name">
+                                    <input type="text" id="firstname" name="firstname" placeholder="First name"
+                                        required>
                                 </div>
                                 <div class="input">
                                     <label for="lastname">Last Name</label>
-                                    <input type="text" id="lastname" name="lastname" placeholder="Last name">
+                                    <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
                                 </div>
                             </div>
                             <div class="input">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="you@company.com">
+                                <input type="email" id="email" name="email" placeholder="you@company.com" required>
                             </div>
                             <div class="input">
                                 <label for="message">Message</label>
-                                <input class="textarea" type="textarea" id="message" name="message">
+                                <input class="textarea" type="textarea" id="message" name="message" required>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="politics">
+                                <input type="checkbox" class="politics" required>
                                 <p>You agree to our friendly <a href="#policy">privacy policy.</a></p>
                             </div>
                             <button type="submit">Send Message</button>
@@ -685,8 +686,8 @@
                     <p>Be the first to receive latest updates on promo, sales and offers</p>
                 </div>
                 <div class="subs-wrapper">
-                    <input type="email" class="subscribe" name="emailnews" id="emailnews"
-                        placeholder="Enter your email">
+                    <input type="email" class="subscribe" name="emailnews" id="email" placeholder="Enter your email"
+                        required>
 
                     <button>Subscribe</button>
                 </div>

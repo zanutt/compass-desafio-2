@@ -34,7 +34,6 @@
     --text-dark: #000000;
     --secondary-color: #6c757d;
     --light-bg: #ffffff;
-    --secondary-font: "Ginora Sans", sans-serif;
   }
 }
 
@@ -748,6 +747,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 15px;
   }
 
   .services-grid a:nth-child(5) {

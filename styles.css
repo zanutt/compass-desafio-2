@@ -387,12 +387,12 @@
     box-shadow: 0 2px 8px rgba(16, 24, 40, 0.05);
   }
   .search-input {
-    padding: 10px 40px 10px 16px;
     border: 1px solid #f5f5f5;
     border-radius: var(--radius-full);
     background: #f5f5f5;
     font-size: 17px;
     outline: none;
+    max-width: 100px;
   }
 
   .search-icon {
@@ -576,6 +576,12 @@
     .lupa {
       display: none !important;
     }
+
+    .search-input {
+      padding: 10px 40px 10px 16px;
+      max-width: none;
+    }
+
     .shop-container ul {
       gap: 10px;
     }

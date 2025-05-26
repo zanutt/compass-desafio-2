@@ -1,6 +1,6 @@
 // Função de fazer o video dar play
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector(".desktop-video");
   const playBtn = document.querySelector(".custom-play");
 
@@ -38,13 +38,13 @@ function validateName(input) {
 }
 
 if (firstName) {
-  firstName.addEventListener("input", function () {
+  firstName.addEventListener("input", () => {
     validateName(firstName);
   });
 }
 
 if (lastName) {
-  lastName.addEventListener("input", function () {
+  lastName.addEventListener("input", () => {
     validateName(lastName);
   });
 }
@@ -53,7 +53,7 @@ if (lastName) {
 var email = document.getElementById("email");
 
 if (email) {
-  email.addEventListener("input", function (event) {
+  email.addEventListener("input", (event) => {
     if (email.validity.typeMismatch) {
       email.setCustomValidity("Por favor coloque um email valido");
     } else {
@@ -65,7 +65,7 @@ if (email) {
 // validação do email do subscribe
 var emailNews = document.getElementById("emailnews");
 if (emailNews) {
-  emailNews.addEventListener("input", function () {
+  emailNews.addEventListener("input", () => {
     if (emailNews.validity.typeMismatch) {
       emailNews.setCustomValidity("Por favor coloque um email válido");
     } else {
@@ -74,57 +74,32 @@ if (emailNews) {
   });
 }
 
-// Validação da mensagem (Nâo estou conseguindo evitar XSS por exemplo)
-
-var msg = document.getElementById("message");
-
-function validateMsg(input) {
-  var value = input.value.trim();
-  var isValid = value.length > 0;
-  if (!isValid) {
-    input.setCustomValidity("Por favor digite um nome válido");
-  } else {
-    email.setCustomValidity("");
-  }
-}
-
-msg.addEventListener("input", function () {
-  validateMsg(msg);
-});
-
 // Função para aparecer e desaparecer o search no mobile
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const lupa = document.querySelector(".lupa");
-  const searchInput = document.querySelector(".search-input-mobile");
+  const searchBar = document.querySelector(".search-bar");
+  const searchInput = document.querySelector(".search-input");
 
-  function showInput() {
-    lupa.style.display = "none";
-    searchInput.style.display = "block";
+  lupa.addEventListener("click", (e) => {
+    searchBar.classList.add("active");
     searchInput.focus();
-  }
-
-  function hideInput() {
-    searchInput.style.display = "none";
-    lupa.style.display = "block";
-  }
-
-  lupa.addEventListener("click", function (e) {
-    showInput();
     e.stopPropagation();
   });
 
-  document.addEventListener("click", function (e) {
-    if (searchInput.style.display === "block" && !wrapper.contains(e.target)) {
-      hideInput();
+  document.addEventListener("click", (e) => {
+    if (
+      searchBar.classList.contains("active") &&
+      !searchBar.contains(e.target)
+    ) {
+      searchBar.classList.remove("active");
     }
   });
 
-  searchInput.addEventListener("blur", function () {
-    setTimeout(hideInput, 100);
+  searchInput.addEventListener("blur", () => {
+    setTimeout(() => searchBar.classList.remove("active"), 100);
   });
 });
-
 // DROPDOWN MENU
 
 document.addEventListener("click", (e) => {

@@ -51,6 +51,12 @@
     color: var(--color-white);
     font-family: var(--font-main);
   }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
@@ -264,6 +270,10 @@
 
 /* Hero Section */
 @layer components {
+  .hero {
+    order: 1;
+  }
+
   .hero-text {
     margin-top: 8.5em;
     max-width: 100%;
@@ -352,6 +362,7 @@
   .shop {
     background: var(--color-white);
     color: var(--color-dark);
+    order: 2;
   }
   .top-shop {
     display: flex;
@@ -579,6 +590,7 @@
     .container-max {
       border: 0.5px solid #f5f5f5;
       padding: 40px 21px;
+      margin-top: 64px;
     }
     .products {
       margin-top: 40px;
@@ -592,6 +604,7 @@
     background-color: var(--color-light);
     color: var(--color-dark);
     padding: 40px 16px;
+    order: 3;
   }
 
   .title-service {
@@ -772,6 +785,7 @@
     color: var(--color-dark);
     font-size: 20px;
     gap: 20px;
+    order: 4;
   }
 
   .about-us-container {
@@ -827,8 +841,9 @@
 @layer components {
   .blog {
     background-color: var(--color-light);
-    color: var(--color-dark);
+    color: #101828;
     padding: 10px 16px 0 16px;
+    order: 5;
   }
 
   .blog article h2 {
@@ -881,6 +896,7 @@
   @media (min-width: 769px) {
     .blog {
       padding: 70px 80px 16px 80px;
+      order: 6;
     }
     .blog-container {
       display: flex;
@@ -890,10 +906,27 @@
 
     .blog-container article h2 {
       padding-bottom: 48px;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.72px;
     }
 
     .blog-container article p {
       padding: 32px 0;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .btn-read-more > span {
+      font-size: 20px;
+      color: var(--color-light);
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .blog-container article h3 {
+      font-size: 24px;
+      font-weight: 600;
     }
 
     .blog-container > article,
@@ -950,6 +983,7 @@
     background-color: var(--color-light);
     color: var(--color-dark);
     padding: 40px 16px;
+    order: 6;
   }
 
   .title-service {
@@ -1004,6 +1038,7 @@
   @media (min-width: 769px) {
     .team {
       padding: 70px 80px 16px 80px;
+      order: 5;
     }
 
     .team-container {
@@ -1229,7 +1264,10 @@
     }
 
     .contacts {
-      gap: 32px;
+      gap: 45px;
+      margin-right: 53px;
+      bottom: 26px;
+      position: relative;
     }
 
     .left-contacts {

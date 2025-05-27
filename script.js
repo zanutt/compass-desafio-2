@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => searchBar.classList.remove("active"), 100);
   });
 });
-// DROPDOWN MENU
+// DROPDOWN MENU  (https://www.youtube.com/watch?v=S-VeYcOCFZw&t)
 
 document.addEventListener("click", (e) => {
   const isDropdownButton = e.target.closest("[data-dropdown-button]");
